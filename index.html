@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>ArchFlow – Infraestrutura sem Hype</title>
+  <meta name="description" content="Infraestrutura, operação e decisões técnicas sem hype. Artigos práticos sobre cloud, Linux, redes, segurança e labs." />
+
+  <link rel="stylesheet" href="css/style.css" />
+  <!-- ✅ NOVO: overrides por último -->
+  <link rel="stylesheet" href="css/overrides.css" />
+</head>
+<body>
+
+  <!-- FUNDO TECH (camadas, não bloqueia cliques) -->
+  <div class="bg-tech" aria-hidden="true">
+    <div class="bg-wallpaper"></div>
+    <div class="bg-grid"></div>
+    <div class="bg-glow"></div>
+    <div class="bg-noise"></div>
+    <div class="bg-scan"></div>
+  </div>
+
+  <!-- HEADER -->
+  <header class="header" role="banner">
+    <div class="container header-content">
+
+      <a class="logo" href="index.html" aria-label="Voltar para a página inicial">
+        <span class="logo-icon" aria-hidden="true">≋</span>
+        <div>
+          <strong>ArchFlow</strong>
+          <small>Fluxo de Conhecimento Técnico</small>
+        </div>
+      </a>
+
+      <nav class="nav" aria-label="Navegação principal">
+        <a href="index.html" class="active" aria-current="page">Início</a>
+        <a href="artigos.html">Artigos</a>
+        <a href="sobre.html">Sobre</a>
+        <a href="contato.html">Contato</a>
+      </nav>
+
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero" aria-label="Apresentação do site">
+    <div class="hero-overlay" aria-hidden="true"></div>
+
+    <div class="hero-content">
+      <div class="hero-kicker">Infraestrutura • Operação • Decisão</div>
+
+      <h1>Infraestrutura, Operação e Decisão Técnica</h1>
+
+      <p>
+        Análises práticas, opiniões fundamentadas e experiências reais sobre infraestrutura
+        de TI moderna. Sem tutoriais superficiais — apenas conteúdo técnico de qualidade.
+      </p>
+
+      <!-- 🔎 BUSCA (vai para artigos.html?q=...) -->
+      <form class="searchbar" id="home-search" role="search" aria-label="Buscar artigos">
+        <div class="searchbar-icon" aria-hidden="true">⌕</div>
+        <input
+          class="searchbar-input"
+          type="search"
+          name="q"
+          placeholder="Buscar por título, categoria, tags…"
+          autocomplete="off"
+        />
+        <button class="searchbar-btn" type="submit">Buscar</button>
+      </form>
+
+      <!-- CHIPS COM ÍCONES (agora clicáveis: vão para artigos.html?tag=...) -->
+      <div class="tags tags-clickable" aria-label="Categorias">
+        <button class="tag" type="button" data-tag="Cloud" aria-label="Filtrar por Cloud">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M7.5 18h10a4 4 0 0 0 .7-7.94A5.5 5.5 0 0 0 7.38 9.5 3.5 3.5 0 0 0 7.5 18Z"
+              stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+          </svg>
+          Cloud
+        </button>
+
+        <button class="tag" type="button" data-tag="Linux" aria-label="Filtrar por Linux">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M4 6h16v12H4V6Z" stroke="currentColor" stroke-width="2"/>
+            <path d="M7 10l3 2-3 2" stroke="currentColor" stroke-width="2"/>
+            <path d="M12 14h5" stroke="currentColor" stroke-width="2"/>
+          </svg>
+          Linux
+        </button>
+
+        <button class="tag" type="button" data-tag="Servidores" aria-label="Filtrar por Servidores">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M4 6h16v5H4V6Zm0 7h16v5H4v-5Z" stroke="currentColor" stroke-width="2"/>
+            <path d="M7 8h.01M7 15h.01" stroke="currentColor" stroke-width="3"/>
+          </svg>
+          Servidores
+        </button>
+
+        <button class="tag" type="button" data-tag="Redes" aria-label="Filtrar por Redes">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M7 7h4v4H7V7Zm6 6h4v4h-4v-4Z" stroke="currentColor" stroke-width="2"/>
+            <path d="M11 9h2a3 3 0 0 1 3 3v1" stroke="currentColor" stroke-width="2"/>
+            <path d="M9 11v2a3 3 0 0 0 3 3h1" stroke="currentColor" stroke-width="2"/>
+          </svg>
+          Redes
+        </button>
+
+        <button class="tag" type="button" data-tag="Segurança" aria-label="Filtrar por Segurança">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M12 3 19 6v6c0 5-3 9-7 9s-7-4-7-9V6l7-3Z"
+              stroke="currentColor" stroke-width="2"/>
+          </svg>
+          Segurança
+        </button>
+
+        <button class="tag" type="button" data-tag="IA" aria-label="Filtrar por IA">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M9 4a3 3 0 0 0-3 3v1a3 3 0 0 0 0 6v3a3 3 0 0 0 3 3"
+              stroke="currentColor" stroke-width="2"/>
+            <path d="M15 4a3 3 0 0 1 3 3v1a3 3 0 0 1 0 6v3a3 3 0 0 1-3 3"
+              stroke="currentColor" stroke-width="2"/>
+            <path d="M10 8h4M10 12h4M10 16h4" stroke="currentColor" stroke-width="2"/>
+          </svg>
+          IA
+        </button>
+
+        <button class="tag" type="button" data-tag="Labs" aria-label="Filtrar por Labs">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M10 3v6l-5 9a3 3 0 0 0 2.6 4.5h8.8A3 3 0 0 0 19 18l-5-9V3"
+              stroke="currentColor" stroke-width="2"/>
+            <path d="M9 9h6" stroke="currentColor" stroke-width="2"/>
+          </svg>
+          Labs
+        </button>
+      </div>
+
+      <div class="cta">
+        <a class="btn-primary" href="artigos.html" aria-label="Explorar artigos">
+          Explorar Artigos <span aria-hidden="true">→</span>
+        </a>
+
+        <a class="btn-ghost" href="sobre.html" aria-label="Conhecer o projeto">
+          Sobre o projeto
+        </a>
+      </div>
+
+      <div class="hero-metrics" aria-label="Destaques do site">
+        <div class="metric">
+          <div class="metric-title">Conteúdo</div>
+          <div class="metric-value">Prático</div>
+        </div>
+        <div class="metric">
+          <div class="metric-title">Foco</div>
+          <div class="metric-value">Operação</div>
+        </div>
+        <div class="metric">
+          <div class="metric-title">Estilo</div>
+          <div class="metric-value">Sem Hype</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <main>
+    <section class="panel-section" aria-label="Painel de conteúdo">
+      <div class="container">
+        <div class="panel-grid">
+          <div class="panel-card">
+            <div class="panel-head">
+              <h3>Painel do Site</h3>
+              <span class="panel-pill" id="site-status-pill">online</span>
+            </div>
+
+            <div class="panel-stats">
+              <div class="stat">
+                <div class="stat-k">Posts</div>
+                <div class="stat-v" id="stat-posts">—</div>
+              </div>
+              <div class="stat">
+                <div class="stat-k">Publicados</div>
+                <div class="stat-v" id="stat-published">—</div>
+              </div>
+              <div class="stat">
+                <div class="stat-k">Última atualização</div>
+                <div class="stat-v" id="stat-last">—</div>
+              </div>
+            </div>
+
+            <div class="panel-note">
+              Objetivo: centralizar conhecimento prático, decisões reais e operação sem hype.
+            </div>
+          </div>
+
+          <div class="panel-card">
+            <div class="panel-head">
+              <h3>Trilhas</h3>
+              <span class="panel-sub">roteiros para evoluir com consistência</span>
+            </div>
+
+            <div class="trail-grid">
+              <a class="trail" href="artigos.html?trail=comece" aria-label="Trilha Comece por aqui">
+                <strong>Comece por aqui</strong>
+                <span>base para navegar no conteúdo</span>
+              </a>
+              <a class="trail" href="artigos.html?trail=hardening" aria-label="Trilha Hardening básico">
+                <strong>Hardening básico</strong>
+                <span>reduza superfície de ataque</span>
+              </a>
+              <a class="trail" href="artigos.html?trail=segmentacao" aria-label="Trilha Rede segmentada">
+                <strong>Rede segmentada</strong>
+                <span>VLAN, ACL, zonas e risco</span>
+              </a>
+              <a class="trail" href="artigos.html?trail=observabilidade" aria-label="Trilha Observabilidade">
+                <strong>Observabilidade</strong>
+                <span>logs, métricas e detecção</span>
+              </a>
+            </div>
+          </div>
+
+          <div class="panel-card">
+            <div class="panel-head">
+              <h3>Categorias</h3>
+              <span class="panel-sub">clique para filtrar</span>
+            </div>
+
+            <div class="cat-grid">
+              <a class="cat-card" href="artigos.html?tag=Cloud">
+                <strong>Cloud</strong><span>arquitetura, custo, operação</span>
+              </a>
+              <a class="cat-card" href="artigos.html?tag=Linux">
+                <strong>Linux</strong><span>serviços, tuning, rotinas</span>
+              </a>
+              <a class="cat-card" href="artigos.html?tag=Servidores">
+                <strong>Servidores</strong><span>infra real, upgrades, boas práticas</span>
+              </a>
+              <a class="cat-card" href="artigos.html?tag=Redes">
+                <strong>Redes</strong><span>segmentação, troubleshooting</span>
+              </a>
+              <a class="cat-card" href="artigos.html?tag=Segurança">
+                <strong>Segurança</strong><span>hardening, incidentes, risco</span>
+              </a>
+              <a class="cat-card" href="artigos.html?tag=Labs">
+                <strong>Labs</strong><span>ambientes, testes, validações</span>
+              </a>
+            </div>
+          </div>
+
+          <div class="panel-card">
+            <div class="panel-head">
+              <h3>Ferramentas</h3>
+              <span class="panel-sub">atalhos práticos</span>
+            </div>
+
+            <div class="tool-grid">
+              <a class="tool" href="artigos.html?tool=checklists">
+                <strong>Checklists</strong>
+                <span>hardening, deploy, pós-incidente</span>
+              </a>
+              <a class="tool" href="artigos.html?tool=comandos">
+                <strong>Comandos</strong>
+                <span>Linux, rede, diagnósticos</span>
+              </a>
+              <a class="tool" href="artigos.html?tool=templates">
+                <strong>Templates</strong>
+                <span>padrões, modelos e notas</span>
+              </a>
+              <a class="tool" href="artigos.html?tool=snippets">
+                <strong>Snippets</strong>
+                <span>config, exemplos rápidos</span>
+              </a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <section class="articles-section" aria-label="Artigos em destaque">
+      <div class="container">
+
+        <div class="section-header">
+          <h2 class="section-title">Artigos em Destaque</h2>
+          <p class="section-subtitle">Conteúdo técnico recente e relevante</p>
+        </div>
+
+        <div class="articles-grid" role="list" id="featured-posts">
+          <p style="color:rgba(229,231,235,0.7)">Carregando destaques…</p>
+        </div>
+
+        <div class="center">
+          <a href="artigos.html" class="btn-outline" aria-label="Ver todos os artigos">
+            Ver Todos os Artigos <span aria-hidden="true">→</span>
+          </a>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer" role="contentinfo">
+    <div class="container footer-grid">
+
+      <div>
+        <h4>ArchFlow</h4>
+        <p>Hub de conhecimento especializado em infraestrutura de TI.</p>
+      </div>
+
+      <div>
+        <h4>Links Rápidos</h4>
+        <a href="index.html">Início</a>
+        <a href="artigos.html">Artigos</a>
+        <a href="sobre.html">Sobre</a>
+        <a href="contato.html">Contato</a>
+      </div>
+
+      <div>
+        <h4>Categorias</h4>
+        <div class="tags tags-mini">
+          <span>Cloud</span><span>Linux</span><span>Redes</span>
+          <span>Segurança</span><span>IA</span><span>Labs</span>
+        </div>
+      </div>
+
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="js/supabaseClient.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

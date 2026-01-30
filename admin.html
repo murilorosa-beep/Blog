@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+  <title>Admin | ArchFlow</title>
+  <meta name="robots" content="noindex,nofollow" />
+  <link rel="stylesheet" href="css/admin.css" />
+</head>
+
+<body>
+
+<header class="header">
+  <div class="header-content">
+    <div class="logo">
+      <span class="logo-mark">A</span>
+      <span class="logo-text">ArchFlow Admin</span>
+    </div>
+
+    <button id="btn-logout" class="btn btn-ghost" style="display:none">Sair</button>
+  </div>
+</header>
+
+<main class="container">
+  <div id="global-msg" class="msg"></div>
+
+  <section id="app-card" class="admin-layout" style="display:none">
+
+    <aside class="sidebar">
+      <div class="sidebar-head">
+        <strong>Artigos</strong>
+        <button id="btn-new" class="btn btn-mini">Novo</button>
+      </div>
+
+      <input id="search" class="search" placeholder="Buscar..." />
+      <div id="posts-list" class="post-list"></div>
+    </aside>
+
+    <section class="editor">
+      <div class="editor-head">
+        <div>
+          <h2>Editor</h2>
+          <span id="user-line" class="muted">—</span>
+        </div>
+
+        <div class="editor-actions">
+          <label class="publish-toggle" title="Publicar / despublicar">
+            <input id="published" type="checkbox" />
+            <span class="toggle-ui"></span>
+            <span class="publish-text">Publicado</span>
+          </label>
+
+          <button id="btn-preview" class="btn btn-ghost" type="button">Preview</button>
+          <button id="btn-delete" class="btn btn-danger" type="button">Excluir</button>
+        </div>
+      </div>
+
+      <form id="post-form" class="editor-form">
+        <input id="post-id" type="hidden" />
+
+        <label>Título</label>
+        <input id="title" required />
+
+        <label>Slug</label>
+        <input id="slug" placeholder="auto (se vazio)" />
+
+        <label>Categoria</label>
+        <select id="category">
+          <option>Linux</option>
+          <option>Cloud</option>
+          <option>Redes</option>
+          <option>Segurança</option>
+          <option>Servidores</option>
+          <option>IA</option>
+          <option>Labs</option>
+          <option>Geral</option>
+        </select>
+
+        <label>Resumo</label>
+        <textarea id="excerpt" rows="3"></textarea>
+
+        <label>Capa (URL)</label>
+        <input id="cover-url" placeholder="https://..." />
+
+        <label>Enviar capa (imagem)</label>
+        <input id="cover-file" type="file" accept="image/*" />
+        <button id="btn-upload-cover" class="btn btn-ghost" type="button">Enviar imagem</button>
+        <p class="muted" style="margin-top:-6px">Envia para o Storage e preenche a URL automaticamente.</p>
+
+        <label>Conteúdo (HTML)</label>
+        <textarea id="content-html" rows="12" class="code"></textarea>
+
+        <div class="form-actions">
+          <button class="btn btn-primary" type="submit">Salvar</button>
+        </div>
+      </form>
+
+      <div class="preview">
+        <h3>Preview</h3>
+        <div id="preview-box"></div>
+      </div>
+    </section>
+  </section>
+</main>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="js/supabaseClient.js"></script>
+<script src="js/admin-config.js"></script>
+<script src="js/admin.js"></script>
+
+</body>
+</html>

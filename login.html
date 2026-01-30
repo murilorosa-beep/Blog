@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+  <title>Login Admin | ArchFlow</title>
+  <meta name="robots" content="noindex,nofollow" />
+  
+  <!-- Inclui o CSS principal do site -->
+  <link rel="stylesheet" href="css/style.css" />
+  
+  <style>
+    /* Estilos específicos para a página de login */
+    .login-wrap {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .login-card {
+      width: 100%;
+      max-width: 420px;
+      background: rgba(255,255,255,.05);
+      border: 1px solid #1f2937;
+      border-radius: 18px;
+      padding: 32px;
+      box-shadow: 0 30px 90px rgba(0,0,0,.6);
+      backdrop-filter: blur(6px);
+    }
+
+    .login-head {
+      text-align: center;
+      margin-bottom: 28px;
+    }
+
+    .logo-mark {
+      display: inline-flex;
+      width: 48px;
+      height: 48px;
+      border-radius: 14px;
+      background: linear-gradient(135deg, #10b981, #34d399);
+      color: #022c22;
+      font-weight: 800;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 12px;
+      font-size: 20px;
+    }
+
+    .login-head h1 {
+      font-size: 24px;
+      margin-bottom: 8px;
+      background: linear-gradient(135deg, #e5e7eb, #9ca3af);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .login-head p {
+      font-size: 14px;
+      color: #9ca3af;
+    }
+
+    label {
+      display: block;
+      margin: 16px 0 6px;
+      font-size: 14px;
+      color: #9ca3af;
+    }
+
+    input {
+      width: 100%;
+      padding: 14px 16px;
+      border-radius: 12px;
+      border: 1px solid #1f2937;
+      background: #0b1220;
+      color: #e5e7eb;
+      font-size: 15px;
+      transition: border-color 0.2s;
+    }
+
+    input:focus {
+      outline: none;
+      border-color: #10b981;
+      box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.1);
+    }
+
+    button {
+      width: 100%;
+      margin-top: 24px;
+      padding: 14px;
+      border-radius: 14px;
+      border: none;
+      background: #10b981;
+      color: #022c22;
+      font-weight: 600;
+      font-size: 15px;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    button:hover {
+      background: #34d399;
+    }
+
+    #msg {
+      margin-top: 16px;
+      font-size: 14px;
+      text-align: center;
+      min-height: 20px;
+      padding: 8px;
+      border-radius: 8px;
+      background: rgba(0,0,0,0.3);
+    }
+
+    .login-back {
+      display: block;
+      margin-top: 24px;
+      text-align: center;
+      font-size: 14px;
+      color: #9ca3af;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .login-back:hover {
+      color: #10b981;
+    }
+  </style>
+</head>
+<body>
+  <!-- FUNDO TECH (igual ao site) -->
+  <div class="bg-tech" aria-hidden="true">
+    <div class="bg-wallpaper"></div>
+    <div class="bg-grid"></div>
+    <div class="bg-glow"></div>
+    <div class="bg-noise"></div>
+    <div class="bg-scan"></div>
+  </div>
+
+  <main class="login-wrap">
+    <section class="login-card">
+      <div class="login-head">
+        <div class="logo-mark">A</div>
+        <h1>ArchFlow Admin</h1>
+        <p>Área restrita para administradores</p>
+      </div>
+
+      <form id="login-form">
+        <label for="email">E-mail</label>
+        <input 
+          type="email" 
+          id="email" 
+          name="email" 
+          placeholder="seu@email.com" 
+          required 
+          autocomplete="email"
+          autofocus
+        />
+
+        <label for="pass">Senha</label>
+        <input 
+          type="password" 
+          id="pass" 
+          name="password" 
+          placeholder="••••••••" 
+          required 
+          autocomplete="current-password"
+        />
+
+        <button type="submit" id="btn-login">
+          Entrar no Admin
+        </button>
+
+        <div id="msg"></div>
+      </form>
+
+      <a href="index.html" class="login-back">
+        ← Voltar para o site
+      </a>
+    </section>
+  </main>
+
+  <!-- ORDEM CRÍTICA: Supabase primeiro -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="js/supabaseClient.js"></script>
+  <script src="js/admin-config.js"></script>
+  <script src="js/login.js"></script>
+
+  <script>
+    // Verificação inicial
+    document.addEventListener('DOMContentLoaded', function() {
+      console.log('Página de login carregada');
+      
+      if (!window.supabaseClient) {
+        console.error('Supabase não inicializou');
+        const msg = document.querySelector('#msg');
+        if (msg) {
+          msg.textContent = 'Erro ao conectar com o servidor. Recarregue a página.';
+          msg.style.color = 'rgba(252,165,165,0.95)';
+        }
+      }
+    });
+  </script>
+</body>
+</html>

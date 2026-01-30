@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Contato | ArchFlow</title>
+  <meta name="description" content="Entre em contato com o ArchFlow." />
+
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <div class="bg-tech" aria-hidden="true">
+    <div class="bg-wallpaper"></div>
+    <div class="bg-grid"></div>
+    <div class="bg-glow"></div>
+    <div class="bg-noise"></div>
+    <div class="bg-scan"></div>
+  </div>
+
+  <header class="header" role="banner">
+    <div class="container header-content">
+      <a class="logo" href="index.html" aria-label="Voltar para a página inicial">
+        <span class="logo-icon" aria-hidden="true">≋</span>
+        <div>
+          <strong>ArchFlow</strong>
+          <small>Fluxo de Conhecimento Técnico</small>
+        </div>
+      </a>
+
+      <nav class="nav" aria-label="Navegação principal">
+        <a href="index.html">Início</a>
+        <a href="artigos.html">Artigos</a>
+        <a href="sobre.html">Sobre</a>
+        <a href="contato.html" aria-current="page">Contato</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero hero-small" aria-label="Contato">
+    <div class="hero-overlay" aria-hidden="true"></div>
+
+    <div class="hero-content">
+      <div class="hero-kicker">Perguntas • Propostas • Parcerias</div>
+      <h1>Contato</h1>
+      <p>Quer sugerir tema, apontar correção, convidar para projeto ou trocar ideia técnica? Manda mensagem.</p>
+
+      <div class="hero-metrics" aria-label="Canais">
+        <div class="metric">
+          <div class="metric-title">Resposta</div>
+          <div class="metric-value">Objetiva</div>
+        </div>
+        <div class="metric">
+          <div class="metric-title">Foco</div>
+          <div class="metric-value">Infra/Operação</div>
+        </div>
+        <div class="metric">
+          <div class="metric-title">Canal</div>
+          <div class="metric-value">E-mail</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <main>
+    <section class="articles-section" aria-label="Formulário de contato">
+      <div class="container">
+        <div class="page-card">
+          <h2 class="page-title">Fale comigo</h2>
+          <p class="page-muted">Use o formulário (local) ou clique no e-mail. Se quiser, eu adapto isso para enviar via Supabase/SMTP depois.</p>
+
+          <div class="contact-grid">
+            <form class="contact-form" id="contact-form">
+              <label class="admin-label">
+                Nome
+                <input class="admin-input" type="text" id="c-name" placeholder="Seu nome" required />
+              </label>
+
+              <label class="admin-label">
+                E-mail
+                <input class="admin-input" type="email" id="c-email" placeholder="voce@exemplo.com" required />
+              </label>
+
+              <label class="admin-label">
+                Mensagem
+                <textarea class="admin-input admin-textarea" id="c-msg" rows="6" placeholder="Escreva sua ideia, dúvida ou proposta..." required></textarea>
+              </label>
+
+              <div class="admin-actions">
+                <button class="admin-btn" type="submit">Enviar</button>
+                <a class="btn-outline" href="mailto:contato@seudominio.com">contato@seudominio.com</a>
+              </div>
+
+              <p class="admin-note" id="c-note" aria-live="polite"></p>
+            </form>
+
+            <aside class="contact-side">
+              <div class="info-card">
+                <h3 class="admin-subtitle">Direto ao ponto</h3>
+                <ul class="mini-list">
+                  <li>Sugestão de artigo (tema + contexto).</li>
+                  <li>Correção com referência (link/log/print).</li>
+                  <li>Parceria (público, objetivo, prazo).</li>
+                  <li>Consultoria (escopo e ambiente).</li>
+                </ul>
+              </div>
+
+              <div class="info-card">
+                <h3 class="admin-subtitle">Observação</h3>
+                <p class="page-muted">
+                  Este formulário é local (não envia para servidor). Se quiser envio real, eu te passo a versão com Supabase (Edge Function) ou SMTP.
+                </p>
+              </div>
+            </aside>
+          </div>
+
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer" role="contentinfo">
+    <div class="container footer-grid">
+      <div>
+        <h4>ArchFlow</h4>
+        <p>Hub de conhecimento especializado em infraestrutura de TI.</p>
+      </div>
+
+      <div>
+        <h4>Links Rápidos</h4>
+        <a href="index.html">Início</a>
+        <a href="artigos.html">Artigos</a>
+        <a href="sobre.html">Sobre</a>
+        <a href="contato.html">Contato</a>
+        
+      </div>
+
+      <div>
+        <h4>Categorias</h4>
+        <div class="tags tags-mini">
+          <span>Cloud</span><span>Linux</span><span>Redes</span>
+          <span>Segurança</span><span>IA</span><span>Labs</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Form local (só feedback visual)
+    document.getElementById("contact-form")?.addEventListener("submit", (e) => {
+      e.preventDefault();
+      const note = document.getElementById("c-note");
+      if (note) {
+        note.textContent = "Enviado (modo local) ✅";
+        note.style.color = "rgba(134,239,172,0.95)";
+      }
+      e.target.reset();
+    });
+  </script>
+</body>
+</html>

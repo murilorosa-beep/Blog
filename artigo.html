@@ -1,0 +1,210 @@
+<!-- arquivo: artigo.html -->
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Artigo | ArchFlow</title>
+  <meta name="description" content="Leitura do artigo no ArchFlow." />
+
+  <!-- CSS principal -->
+  <link rel="stylesheet" href="css/style.css" />
+
+  <!-- ✅ CSS EXTRA: arrastar capa -->
+  <link rel="stylesheet" href="css/cover-drag.css" />
+
+  <!-- ✅ CSS EXTRA: sumário lateral (TOC) -->
+  <style>
+    .article-layout{
+      display:grid;
+      grid-template-columns:280px minmax(0,1fr);
+      gap:18px;
+      align-items:start;
+      margin-top:14px;
+    }
+    .article-toc{
+      position:sticky;
+      top:92px;
+      height:calc(100vh - 110px);
+      overflow:auto;
+      padding-right:6px;
+    }
+    .toc-card{
+      border:1px solid rgba(255,255,255,.10);
+      background:rgba(255,255,255,.04);
+      border-radius:16px;
+      padding:14px 12px;
+      box-shadow:0 18px 55px rgba(0,0,0,.35);
+      backdrop-filter:blur(10px);
+    }
+    .toc-title{
+      font-weight:700;
+      font-size:14px;
+      letter-spacing:.2px;
+      color:rgba(229,231,235,.92);
+      margin:0 0 10px;
+    }
+    .toc-nav a{
+      display:block;
+      padding:8px 10px;
+      border-radius:12px;
+      color:rgba(229,231,235,.78);
+      font-size:13px;
+      line-height:1.35;
+      transition:background .15s ease, color .15s ease;
+    }
+    .toc-nav a:hover{
+      background:rgba(16,185,129,.10);
+      color:rgba(229,231,235,.95);
+    }
+    .toc-nav a.is-active{
+      background:rgba(16,185,129,.16);
+      color:rgba(229,231,235,.98);
+      border:1px solid rgba(16,185,129,.25);
+    }
+    .toc-nav a[data-level="3"]{
+      padding-left:18px;
+      opacity:.92;
+    }
+    @media (max-width:980px){
+      .article-layout{ grid-template-columns:1fr; }
+      .article-toc{
+        position:relative;
+        top:auto;
+        height:auto;
+        overflow:visible;
+        order:-1;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- FUNDO TECH -->
+  <div class="bg-tech" aria-hidden="true">
+    <div class="bg-wallpaper"></div>
+    <div class="bg-grid"></div>
+    <div class="bg-glow"></div>
+    <div class="bg-noise"></div>
+    <div class="bg-scan"></div>
+  </div>
+
+  <!-- HEADER PADRONIZADO -->
+  <header class="header" role="banner">
+    <div class="container header-content">
+      <a class="logo" href="index.html" aria-label="Voltar para a página inicial">
+        <span class="logo-icon" aria-hidden="true">≋</span>
+        <div>
+          <strong>ArchFlow</strong>
+          <small>Fluxo de Conhecimento Técnico</small>
+        </div>
+      </a>
+
+      <nav class="nav" aria-label="Navegação principal">
+        <a href="index.html">Início</a>
+        <a href="artigos.html">Artigos</a>
+        <a href="sobre.html">Sobre</a>
+        <a href="contato.html">Contato</a>
+
+        <!-- 🔒 ADMIN OCULTO NA PÁGINA DE ARTIGO -->
+        <!--
+        <a href="admin.html" class="btn-outline">Admin</a>
+        -->
+      </nav>
+    </div>
+  </header>
+
+  <!-- CONTEÚDO -->
+  <main class="article-page" role="main">
+    <div class="container">
+      <div class="article-shell">
+
+        <!-- TOPO -->
+        <div class="article-top">
+          <a class="article-back" href="artigos.html" aria-label="Voltar para artigos">
+            ← Voltar
+          </a>
+
+          <h1 id="article-title" class="article-title">Carregando...</h1>
+
+          <div id="article-meta" class="article-meta" aria-label="Informações do artigo"></div>
+        </div>
+
+        <!-- CAPA (ARRASTÁVEL) -->
+        <div
+          id="article-cover-wrap"
+          class="article-cover-wrap"
+          style="display:none;"
+          aria-label="Arraste a imagem para ajustar o enquadramento"
+        >
+          <img
+            id="article-cover"
+            class="article-cover"
+            alt="Capa do artigo"
+            loading="lazy"
+            decoding="async"
+          />
+        </div>
+
+        <!-- ✅ LAYOUT: SUMÁRIO + TEXTO -->
+        <div class="article-layout">
+          <aside class="article-toc" aria-label="Sumário">
+            <div class="toc-card">
+              <div class="toc-title">Sumário</div>
+              <nav id="article-toc" class="toc-nav"></nav>
+            </div>
+          </aside>
+
+          <article id="article-content" class="article-content" aria-label="Conteúdo do artigo">
+            <p style="color:rgba(229,231,235,0.7)">Carregando conteúdo...</p>
+          </article>
+        </div>
+
+        <!-- AÇÕES -->
+        <div class="article-actions" aria-label="Ações do artigo">
+          <button id="btn-copy-link" class="article-btn" type="button">Copiar link</button>
+          <a class="article-btn" href="artigos.html">Mais artigos</a>
+        </div>
+
+      </div>
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer" role="contentinfo">
+    <div class="container">
+      <p>© <span id="year"></span> ArchFlow</p>
+    </div>
+  </footer>
+
+  <!-- SCRIPT AUXILIAR -->
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    const btn = document.getElementById("btn-copy-link");
+    if (btn) {
+      btn.addEventListener("click", async () => {
+        try {
+          await navigator.clipboard.writeText(location.href);
+          const old = btn.textContent;
+          btn.textContent = "Link copiado!";
+          setTimeout(() => (btn.textContent = old), 1200);
+        } catch {
+          prompt("Copie o link:", location.href);
+        }
+      });
+    }
+  </script>
+
+  <!-- ORDEM CORRETA DOS SCRIPTS -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="js/supabaseClient.js"></script>
+  <script src="js/artigo.js"></script>
+
+  <!-- JS EXTRA: arrastar capa -->
+  <script src="js/cover-drag.js"></script>
+
+</body>
+</html>

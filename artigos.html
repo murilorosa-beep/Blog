@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Artigos | ArchFlow</title>
+  <meta name="description" content="Artigos técnicos sobre infraestrutura, operação e decisões reais." />
+
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+
+<body>
+  <!-- FUNDO TECH -->
+  <div class="bg-tech" aria-hidden="true">
+    <div class="bg-wallpaper"></div>
+    <div class="bg-grid"></div>
+    <div class="bg-glow"></div>
+    <div class="bg-noise"></div>
+    <div class="bg-scan"></div>
+  </div>
+
+  <!-- HEADER -->
+  <header class="header" role="banner">
+    <div class="container header-content">
+      <a class="logo" href="index.html" aria-label="Voltar para a página inicial">
+        <span class="logo-icon" aria-hidden="true">≋</span>
+        <div>
+          <strong>ArchFlow</strong>
+          <small>Fluxo de Conhecimento Técnico</small>
+        </div>
+      </a>
+
+      <nav class="nav" aria-label="Navegação principal">
+        <a href="index.html">Início</a>
+        <a href="artigos.html" class="active" aria-current="page">Artigos</a>
+        <a href="sobre.html">Sobre</a>
+        <a href="contato.html">Contato</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero hero-small" aria-label="Artigos">
+    <div class="hero-overlay" aria-hidden="true"></div>
+
+    <div class="hero-content">
+      <div class="hero-kicker">Arquitetura • Operação • Risco</div>
+      <h1>Artigos Técnicos</h1>
+      <p>Análises práticas e decisões técnicas sem hype.</p>
+
+      <!-- TAGS (IGUAL AO INDEX) -->
+      <div class="tags tags-clickable" aria-label="Categorias">
+
+        <button class="tag" type="button" data-tag="Cloud">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M7.5 18h10a4 4 0 0 0 .7-7.94A5.5 5.5 0 0 0 7.38 9.5 3.5 3.5 0 0 0 7.5 18Z"
+              stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+          </svg>
+          Cloud
+        </button>
+
+        <button class="tag" type="button" data-tag="Linux">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M4 6h16v12H4V6Z" stroke="currentColor" stroke-width="2"/>
+            <path d="M7 10l3 2-3 2" stroke="currentColor" stroke-width="2"/>
+            <path d="M12 14h5" stroke="currentColor" stroke-width="2"/>
+          </svg>
+          Linux
+        </button>
+
+        <button class="tag" type="button" data-tag="Servidores">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M4 6h16v5H4V6Zm0 7h16v5H4v-5Z" stroke="currentColor" stroke-width="2"/>
+            <path d="M7 8h.01M7 15h.01" stroke="currentColor" stroke-width="3"/>
+          </svg>
+          Servidores
+        </button>
+
+        <button class="tag" type="button" data-tag="Redes">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M7 7h4v4H7V7Zm6 6h4v4h-4v-4Z" stroke="currentColor" stroke-width="2"/>
+            <path d="M11 9h2a3 3 0 0 1 3 3v1" stroke="currentColor" stroke-width="2"/>
+            <path d="M9 11v2a3 3 0 0 0 3 3h1" stroke="currentColor" stroke-width="2"/>
+          </svg>
+          Redes
+        </button>
+
+        <button class="tag" type="button" data-tag="Segurança">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M12 3 19 6v6c0 5-3 9-7 9s-7-4-7-9V6l7-3Z"
+              stroke="currentColor" stroke-width="2"/>
+          </svg>
+          Segurança
+        </button>
+
+        <button class="tag" type="button" data-tag="IA">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M9 4a3 3 0 0 0-3 3v1a3 3 0 0 0 0 6v3a3 3 0 0 0 3 3"
+              stroke="currentColor" stroke-width="2"/>
+            <path d="M15 4a3 3 0 0 1 3 3v1a3 3 0 0 1 0 6v3a3 3 0 0 1-3 3"
+              stroke="currentColor" stroke-width="2"/>
+            <path d="M10 8h4M10 12h4M10 16h4" stroke="currentColor" stroke-width="2"/>
+          </svg>
+          IA
+        </button>
+
+        <button class="tag" type="button" data-tag="Labs">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M10 3v6l-5 9a3 3 0 0 0 2.6 4.5h8.8A3 3 0 0 0 19 18l-5-9V3"
+              stroke="currentColor" stroke-width="2"/>
+            <path d="M9 9h6" stroke="currentColor" stroke-width="2"/>
+          </svg>
+          Labs
+        </button>
+
+      </div>
+
+      <!-- STATUS -->
+      <p id="results-note" style="margin-top:-10px;color:rgba(229,231,235,0.70)"></p>
+
+      <div class="center" id="clear-wrap" style="padding-top:12px; display:none;">
+        <a class="btn-outline" id="btn-clear-filters" href="artigos.html">
+          Limpar filtros
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- LISTA -->
+  <main>
+    <section class="articles-section" aria-label="Lista de artigos">
+      <div class="container">
+        <div class="articles-grid" role="list" id="posts-grid">
+          <p style="color:rgba(229,231,235,0.7)">Carregando artigos…</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer" role="contentinfo">
+    <div class="container footer-grid">
+      <div>
+        <h4>ArchFlow</h4>
+        <p>Hub de conhecimento especializado em infraestrutura de TI.</p>
+      </div>
+
+      <div>
+        <h4>Links Rápidos</h4>
+        <a href="index.html">Início</a>
+        <a href="artigos.html">Artigos</a>
+        <a href="sobre.html">Sobre</a>
+        <a href="contato.html">Contato</a>
+      </div>
+
+      <div>
+        <h4>Categorias</h4>
+        <div class="tags tags-mini">
+          <span>Cloud</span><span>Linux</span><span>Redes</span>
+          <span>Segurança</span><span>IA</span><span>Labs</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- SCRIPTS -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="js/supabaseClient.js"></script>
+  <script src="js/artigos.js"></script>
+
+  <!-- TAG CLICK + ATIVO -->
+  <script>
+    const url = new URL(location.href);
+    const currentTag = url.searchParams.get("tag");
+
+    document.querySelectorAll(".tags-clickable .tag").forEach(btn => {
+      const tag = btn.dataset.tag;
+
+      if (tag === currentTag) {
+        btn.classList.add("is-active");
+      }
+
+      btn.addEventListener("click", () => {
+        const u = new URL(location.href);
+        u.searchParams.set("tag", tag);
+        u.searchParams.delete("q");
+        location.href = u.toString();
+      });
+    });
+  </script>
+</body>
+</html>
