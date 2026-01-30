@@ -59,13 +59,14 @@
       </p>
 
       <!-- 🔎 BUSCA (vai para artigos.html?q=...) -->
-      <form class="searchbar" id="home-search" role="search" aria-label="Buscar artigos">
+      <form class="searchbar" id="home-search" role="search" aria-label="Buscar artigos" action="artigos.html">
         <div class="searchbar-icon" aria-hidden="true">⌕</div>
         <input
           class="searchbar-input"
           type="search"
           name="q"
           placeholder="Buscar por título, categoria, tags…"
+          aria-label="Buscar artigos"
           autocomplete="off"
         />
         <button class="searchbar-btn" type="submit">Buscar</button>
@@ -173,7 +174,7 @@
               <span class="panel-pill" id="site-status-pill">online</span>
             </div>
 
-            <div class="panel-stats">
+            <div class="panel-stats" aria-live="polite">
               <div class="stat">
                 <div class="stat-k">Posts</div>
                 <div class="stat-v" id="stat-posts">—</div>
