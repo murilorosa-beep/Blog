@@ -819,7 +819,7 @@ body > *:not(.bg-tech){
   color:#fff;
   letter-spacing: -0.02em;
 }
-admin-subtitle{
+.admin-subtitle{
   font-size: 1.05rem;
   font-weight: 950;
   color:#fff;
@@ -919,7 +919,7 @@ admin-subtitle{
   padding: 14px;
 }
 
-admin-panel-head{
+.admin-panel-head{
   display:flex;
   align-items:center;
   justify-content:space-between;
@@ -927,14 +927,14 @@ admin-panel-head{
   margin-bottom: 12px;
 }
 
-admin-filters{
+.admin-filters{
   display:grid;
   grid-template-columns: 1fr;
   gap: 10px;
   margin-bottom: 12px;
 }
 
-admin-list{
+.admin-list{
   display:flex;
   flex-direction:column;
   gap: 10px;
@@ -944,7 +944,7 @@ admin-list{
 }
 
 /* item lista */
-admin-item{
+.admin-item{
   text-align:left;
   width:100%;
   border-radius: 16px;
@@ -954,17 +954,17 @@ admin-item{
   cursor:pointer;
   transition: transform .18s ease, border-color .18s ease, background .18s ease;
 }
-admin-item:hover{
+.admin-item:hover{
   transform: translateY(-1px);
   border-color: rgba(16,185,129,.28);
   background: rgba(16,185,129,.06);
 }
-admin-item.is-active{
+.admin-item.is-active{
   border-color: rgba(16,185,129,.55);
   background: rgba(16,185,129,.10);
 }
 
-admin-item-top{
+.admin-item-top{
   display:flex;
   align-items:center;
   justify-content:space-between;
