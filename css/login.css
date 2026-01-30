@@ -1,0 +1,119 @@
+/* css/login.css */
+.login-wrap {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  position: relative;
+  z-index: 1;
+}
+
+.login-card {
+  width: 100%;
+  max-width: 420px;
+  background: rgba(255,255,255,.05);
+  border: 1px solid #1f2937;
+  border-radius: 18px;
+  padding: 32px;
+  box-shadow: 0 30px 90px rgba(0,0,0,.6);
+  backdrop-filter: blur(6px);
+}
+
+.login-head {
+  text-align: center;
+  margin-bottom: 28px;
+}
+
+.logo-mark {
+  display: inline-flex;
+  width: 48px;
+  height: 48px;
+  border-radius: 14px;
+  background: linear-gradient(135deg, #10b981, #34d399);
+  color: #022c22;
+  font-weight: 800;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 12px;
+  font-size: 20px;
+}
+
+.login-head h1 {
+  font-size: 24px;
+  margin-bottom: 8px;
+  background: linear-gradient(135deg, #e5e7eb, #9ca3af);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.login-head p {
+  font-size: 14px;
+  color: #9ca3af;
+}
+
+.login-form label {
+  display: block;
+  margin: 16px 0 6px;
+  font-size: 14px;
+  color: #9ca3af;
+}
+
+.login-form input {
+  width: 100%;
+  padding: 14px 16px;
+  border-radius: 12px;
+  border: 1px solid #1f2937;
+  background: #0b1220;
+  color: #e5e7eb;
+  font-size: 15px;
+  transition: border-color 0.2s;
+}
+
+.login-form input:focus {
+  outline: none;
+  border-color: #10b981;
+  box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.1);
+}
+
+.login-form button {
+  width: 100%;
+  margin-top: 24px;
+  padding: 14px;
+  border-radius: 14px;
+  border: none;
+  background: #10b981;
+  color: #022c22;
+  font-weight: 600;
+  font-size: 15px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.login-form button:hover {
+  background: #34d399;
+}
+
+#msg {
+  margin-top: 16px;
+  font-size: 14px;
+  text-align: center;
+  min-height: 20px;
+  padding: 8px;
+  border-radius: 8px;
+  background: rgba(0,0,0,0.3);
+}
+
+.login-back {
+  display: block;
+  margin-top: 24px;
+  text-align: center;
+  font-size: 14px;
+  color: #9ca3af;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.login-back:hover {
+  color: #10b981;
+}

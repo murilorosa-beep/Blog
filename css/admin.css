@@ -1,0 +1,303 @@
+:root{
+  --bg:#020617;
+  --panel:#020617;
+  --card:#0b1220;
+  --border:#1f2937;
+  --text:#e5e7eb;
+  --muted:#9ca3af;
+  --primary:#10b981;
+  --primary-soft:rgba(16,185,129,.15);
+  --danger:#f87171;
+  --radius:16px;
+}
+
+*{box-sizing:border-box}
+
+body{
+  margin:0;
+  font-family:Inter,system-ui,sans-serif;
+  background:linear-gradient(180deg,#020617,#000);
+  color:var(--text);
+}
+
+/* ================= HEADER ================= */
+.header{
+  border-bottom:1px solid var(--border);
+  background:#020617;
+}
+.header-content{
+  max-width:1400px;
+  margin:0 auto;
+  padding:14px 24px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+}
+.logo{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  font-weight:900;
+}
+.logo-mark{
+  width:38px;
+  height:38px;
+  border-radius:12px;
+  background:linear-gradient(135deg,#10b981,#34d399);
+  color:#022c22;
+  display:grid;
+  place-items:center;
+}
+
+/* ================= BASE ================= */
+.container{
+  max-width:1400px;
+  margin:0 auto;
+  padding:24px;
+}
+
+.muted{
+  color:var(--muted);
+  font-size:13px;
+}
+
+.msg{
+  margin-bottom:14px;
+  font-size:14px;
+}
+
+/* ================= BOTÕES ================= */
+.btn{
+  padding:10px 14px;
+  border-radius:12px;
+  border:1px solid var(--border);
+  background:#020617;
+  color:var(--text);
+  cursor:pointer;
+  transition:.2s ease;
+}
+
+.btn:hover{
+  border-color:var(--primary);
+}
+
+.btn-primary{
+  background:var(--primary);
+  color:#022c22;
+  border:none;
+}
+
+.btn-ghost{
+  background:transparent;
+}
+
+.btn-danger{
+  border-color:rgba(248,113,113,.4);
+}
+
+.btn-danger:hover{
+  border-color:var(--danger);
+  color:var(--danger);
+}
+
+.btn-mini{
+  padding:6px 10px;
+  font-size:13px;
+}
+
+/* ================= FORM ================= */
+label{
+  display:block;
+  margin-top:14px;
+  font-size:13px;
+  color:var(--muted);
+}
+
+input, textarea, select{
+  width:100%;
+  margin-top:6px;
+  padding:12px;
+  border-radius:12px;
+  border:1px solid var(--border);
+  background:#020617;
+  color:var(--text);
+}
+
+input:focus,
+textarea:focus,
+select:focus{
+  outline:none;
+  border-color:var(--primary);
+}
+
+textarea.code{
+  font-family:ui-monospace,monospace;
+  font-size:14px;
+}
+
+/* ================= LAYOUT ================= */
+.admin-layout{
+  display:grid;
+  grid-template-columns:320px 1fr;
+  gap:18px;
+}
+
+/* ================= SIDEBAR ================= */
+.sidebar{
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:var(--radius);
+  padding:14px;
+  display:flex;
+  flex-direction:column;
+}
+
+.sidebar-head{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-bottom:10px;
+}
+
+.search{
+  margin-bottom:10px;
+}
+
+.post-list{
+  display:flex;
+  flex-direction:column;
+  gap:8px;
+  overflow:auto;
+}
+
+/* ITEM DO ARTIGO */
+.post-list button{
+  all:unset;
+  cursor:pointer;
+
+  padding:12px 14px;
+  border-radius:12px;
+  border:1px solid rgba(255,255,255,.06);
+  background:rgba(255,255,255,.03);
+
+  color:#e5e7eb;
+  transition:.2s ease;
+}
+
+.post-list button strong{
+  display:block;
+  font-size:14px;
+  font-weight:600;
+  color:#f9fafb;
+}
+
+.post-list button span{
+  display:block;
+  margin-top:4px;
+  font-size:12px;
+  color:#9ca3af;
+}
+
+.post-list button:hover{
+  background:rgba(16,185,129,.08);
+  border-color:rgba(16,185,129,.4);
+}
+
+.post-list button.active{
+  background:rgba(16,185,129,.15);
+  border-color:#10b981;
+}
+
+/* ================= EDITOR ================= */
+.editor{
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:var(--radius);
+  padding:18px;
+}
+
+.editor-head{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-bottom:14px;
+}
+
+.editor-actions{
+  display:flex;
+  align-items:center;
+  gap:12px;
+}
+
+.editor-form{
+  margin-top:6px;
+}
+
+.form-actions{
+  margin-top:16px;
+}
+
+/* ================= PREVIEW ================= */
+.preview{
+  margin-top:24px;
+}
+
+#preview-box{
+  margin-top:10px;
+  padding:14px;
+  border-radius:14px;
+  border:1px solid var(--border);
+  background:#020617;
+}
+
+/* ================= TOGGLE PUBLICADO ================= */
+.publish-toggle{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  cursor:pointer;
+  user-select:none;
+}
+
+.publish-toggle input{
+  display:none;
+}
+
+.toggle-ui{
+  width:42px;
+  height:22px;
+  border-radius:999px;
+  background:rgba(255,255,255,.15);
+  position:relative;
+  transition:.2s ease;
+}
+
+.toggle-ui::after{
+  content:"";
+  position:absolute;
+  top:3px;
+  left:3px;
+  width:16px;
+  height:16px;
+  border-radius:50%;
+  background:#9ca3af;
+  transition:.2s ease;
+}
+
+.publish-toggle input:checked + .toggle-ui{
+  background:rgba(16,185,129,.45);
+}
+
+.publish-toggle input:checked + .toggle-ui::after{
+  transform:translateX(20px);
+  background:#10b981;
+}
+
+.publish-text{
+  font-size:13px;
+  color:#9ca3af;
+}
+
+.publish-toggle input:checked ~ .publish-text{
+  color:#86efac;
+}

@@ -1,0 +1,599 @@
+/* =========================================================
+   css/theme-toggle.css — LIGHT THEME (ajustado p/ legibilidade)
+   Baseado no seu style.css (ArchFlow) + seu toggle atual.
+   ========================================================= */
+
+/* 1) Reserva espaço no header para não "empurrar" o menu */
+.header .header-content{
+  position: relative;
+}
+.header .header-content .nav{
+  padding-right: 88px;
+}
+
+/* 2) Botão (glass, compacto, alinhado) */
+.theme-toggle{
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  height: 34px;
+  width: 60px;
+  border-radius: 999px;
+  border: 1px solid rgba(255,255,255,.14);
+  background: rgba(255,255,255,.06);
+  box-shadow: 0 10px 30px rgba(0,0,0,.35),
+              inset 0 1px 0 rgba(255,255,255,.10);
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 9px;
+  cursor: pointer;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+  transition: background .18s ease, border-color .18s ease, box-shadow .18s ease;
+}
+.theme-toggle:hover{
+  background: rgba(255,255,255,.08);
+  border-color: rgba(255,255,255,.20);
+}
+.theme-toggle:focus{ outline: none; }
+.theme-toggle:focus-visible{
+  box-shadow: 0 0 0 3px rgba(16,185,129,.22),
+              0 10px 30px rgba(0,0,0,.35),
+              inset 0 1px 0 rgba(255,255,255,.10);
+}
+
+/* 3) Ícones */
+.theme-toggle .tt-icon{
+  font-size: 14px;
+  line-height: 1;
+  opacity: .9;
+  filter: drop-shadow(0 1px 8px rgba(0,0,0,.25));
+}
+.theme-toggle .tt-icon.tt-moon{ opacity: .85; }
+.theme-toggle .tt-icon.tt-sun{ opacity: .92; }
+
+/* 4) Knob */
+.theme-toggle .tt-knob{
+  position: absolute;
+  left: 4px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 26px;
+  height: 26px;
+  border-radius: 999px;
+  background: rgba(255,255,255,.92);
+  box-shadow: 0 10px 22px rgba(0,0,0,.35),
+              inset 0 1px 0 rgba(255,255,255,.55);
+  transition: left .18s ease, background .18s ease, box-shadow .18s ease;
+}
+
+/* =========================================================
+   ✅ LIGHT THEME — reforço de contraste/legibilidade
+   (o problema “texto branco” geralmente vem de:
+    - componentes usando color:#fff fixo
+    - variáveis --text/--muted não sendo respeitadas em tudo)
+   ========================================================= */
+
+html[data-theme="light"]{
+  /* Base */
+  --bg-dark: #f1f5f9;
+  --bg-card: rgba(255,255,255,0.90);
+  --border: rgba(15,23,42,0.14);
+  --text-muted: rgba(15,23,42,0.70);
+
+  /* Identidade */
+  --primary: #10b981;
+  --primary-hover: #0da271;
+  --accent-blue: #3b82f6;
+
+  /* Glass claro */
+  --glass: rgba(15,23,42,0.05);
+  --glass-strong: rgba(15,23,42,0.08);
+  --stroke: rgba(15,23,42,0.12);
+  --stroke-strong: rgba(15,23,42,0.16);
+
+  /* Sombras */
+  --shadow-1: 0 18px 55px rgba(15,23,42,0.12);
+  --shadow-2: 0 28px 100px rgba(15,23,42,0.16);
+  --shadow-soft: 0 12px 40px rgba(15,23,42,0.10);
+
+  /* ✅ Texto (mais escuro) */
+  --text: rgba(15,23,42,0.92);
+  --muted: rgba(15,23,42,0.70);
+}
+
+/* =========================================================
+   FUNDO TECH NO CLARO
+   ========================================================= */
+html[data-theme="light"] .bg-tech{ opacity: 0.25; }
+
+html[data-theme="light"] .bg-wallpaper{
+  background:
+    radial-gradient(900px 520px at 50% 0%, rgba(16,185,129,.08), transparent 65%),
+    radial-gradient(950px 520px at 80% 10%, rgba(59,130,246,.06), transparent 60%),
+    radial-gradient(950px 520px at 20% 16%, rgba(168,85,247,.05), transparent 60%),
+    linear-gradient(to bottom, rgba(241,245,249,.96), rgba(226,232,240,.98));
+  filter: saturate(0.85) contrast(1);
+}
+html[data-theme="light"] .bg-grid{
+  opacity: 0.08;
+  background:
+    linear-gradient(to right, rgba(15,23,42,.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(15,23,42,.05) 1px, transparent 1px);
+}
+html[data-theme="light"] .bg-glow{
+  opacity: 0.30;
+  background:
+    radial-gradient(800px 420px at 20% 15%, rgba(16,185,129,.08), transparent 60%),
+    radial-gradient(820px 460px at 80% 20%, rgba(59,130,246,.08), transparent 62%),
+    radial-gradient(920px 520px at 50% 90%, rgba(168,85,247,.06), transparent 64%);
+}
+html[data-theme="light"] .bg-noise{
+  opacity: 0.02;
+  mix-blend-mode: multiply;
+}
+html[data-theme="light"] .bg-scan{
+  opacity: 0.02;
+  background:
+    repeating-linear-gradient(
+      to bottom,
+      rgba(15,23,42,.03) 0px,
+      rgba(15,23,42,.03) 1px,
+      transparent 2px,
+      transparent 7px
+    );
+  mix-blend-mode: multiply;
+}
+
+/* =========================================================
+   ✅ BASE NO CLARO (força leitura geral)
+   ========================================================= */
+html[data-theme="light"] body{
+  color: var(--text);
+  background: var(--bg-dark);
+}
+
+/* ✅ garante que textos “soltos” não fiquem brancos por herança */
+html[data-theme="light"] p,
+html[data-theme="light"] li,
+html[data-theme="light"] span,
+html[data-theme="light"] label{
+  color: rgba(15,23,42,0.86);
+}
+
+html[data-theme="light"] a{ color: rgba(15,23,42,0.86); }
+html[data-theme="light"] a:hover{ color: var(--primary); }
+
+/* =========================================================
+   HEADER NO CLARO
+   ========================================================= */
+html[data-theme="light"] .header{
+  background: rgba(255,255,255,0.88);
+  border-bottom: 1px solid rgba(15,23,42,0.10);
+  backdrop-filter: blur(16px) saturate(180%);
+}
+html[data-theme="light"] .header::after{
+  background: linear-gradient(90deg,
+    rgba(16,185,129,.85),
+    rgba(59,130,246,.65),
+    rgba(168,85,247,.45));
+}
+
+/* Logo */
+html[data-theme="light"] .logo strong{ color: #0f172a; }
+html[data-theme="light"] .logo small{ color: rgba(16,185,129,0.95); }
+
+/* Nav */
+html[data-theme="light"] .nav a{
+  color: rgba(15,23,42,0.78);
+}
+html[data-theme="light"] .nav a:hover{
+  background: rgba(15,23,42,0.05);
+  color: rgba(15,23,42,0.92);
+  border-color: rgba(15,23,42,0.14);
+}
+html[data-theme="light"] .nav a.active{
+  color: var(--primary);
+  background: rgba(16,185,129,0.12);
+  border: 1px solid rgba(16,185,129,0.28);
+  box-shadow: 0 10px 28px rgba(16,185,129,.10);
+}
+
+/* Botões header */
+html[data-theme="light"] .btn-outline{
+  border: 1px solid rgba(15,23,42,0.16);
+  background: rgba(15,23,42,0.04);
+  color: rgba(15,23,42,0.92);
+}
+html[data-theme="light"] .btn-outline:hover{
+  border-color: rgba(16,185,129,0.55);
+  background: rgba(16,185,129,0.12);
+}
+
+/* =========================================================
+   HERO NO CLARO
+   ========================================================= */
+html[data-theme="light"] .hero-overlay{
+  background:
+    radial-gradient(900px 520px at 50% 18%, rgba(16,185,129,.08), transparent 60%),
+    radial-gradient(920px 520px at 70% 30%, rgba(59,130,246,.08), transparent 62%),
+    radial-gradient(920px 520px at 30% 30%, rgba(168,85,247,.06), transparent 62%),
+    linear-gradient(to bottom, rgba(241,245,249,.50), rgba(226,232,240,.60));
+}
+
+/* ✅ aqui é um dos pontos onde “branco fixo” costuma atrapalhar */
+html[data-theme="light"] .hero-content{
+  background: rgba(255,255,255,0.80);
+  border: 1px solid rgba(15,23,42,0.14);
+  box-shadow:
+    0 30px 95px rgba(15,23,42,0.15),
+    0 18px 60px rgba(16,185,129,.08),
+    0 18px 60px rgba(59,130,246,.08);
+}
+
+/* kicker */
+html[data-theme="light"] .hero-kicker{
+  border: 1px solid rgba(15,23,42,0.14);
+  background: rgba(15,23,42,0.05);
+  color: rgba(15,23,42,0.78);
+}
+
+/* ✅ títulos e parágrafos */
+html[data-theme="light"] .hero h1{
+  background: linear-gradient(90deg, #0f172a, var(--primary), var(--accent-blue));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 18px 60px rgba(15,23,42,0.12);
+}
+html[data-theme="light"] .hero p{
+  color: rgba(15,23,42,0.75);
+}
+
+/* CTA */
+html[data-theme="light"] .btn-primary{
+  color: #061018;
+  box-shadow: 0 18px 55px rgba(16,185,129,.14),
+              0 18px 55px rgba(59,130,246,.12);
+}
+html[data-theme="light"] .btn-ghost{
+  border: 1px solid rgba(15,23,42,0.16);
+  background: rgba(15,23,42,0.05);
+  color: rgba(15,23,42,0.92);
+}
+html[data-theme="light"] .btn-ghost:hover{
+  background: rgba(15,23,42,0.07);
+  border-color: rgba(16,185,129,0.34);
+}
+
+/* Métricas */
+html[data-theme="light"] .metric{
+  border: 1px solid rgba(15,23,42,0.14);
+  background: rgba(255,255,255,0.55);
+}
+html[data-theme="light"] .metric-title{ color: rgba(15,23,42,0.72); }
+html[data-theme="light"] .metric-value{ color: rgba(15,23,42,0.95); }
+
+/* =========================================================
+   ✅ CARDS DE ARTIGO NO CLARO (corrige “h3 branco” e meta)
+   ========================================================= */
+html[data-theme="light"] .articles-section .section-title,
+html[data-theme="light"] .panel-head h3,
+html[data-theme="light"] .panel-pill,
+html[data-theme="light"] .stat-v,
+html[data-theme="light"] .trail strong,
+html[data-theme="light"] .cat-card strong,
+html[data-theme="light"] .tool strong{
+  color: rgba(15,23,42,0.95);
+}
+
+html[data-theme="light"] .section-subtitle,
+html[data-theme="light"] .panel-sub,
+html[data-theme="light"] .panel-note,
+html[data-theme="light"] .stat-k,
+html[data-theme="light"] .trail span,
+html[data-theme="light"] .cat-card span,
+html[data-theme="light"] .tool span{
+  color: rgba(15,23,42,0.72);
+}
+
+html[data-theme="light"] .article-card{
+  background: linear-gradient(180deg, rgba(255,255,255,0.90), rgba(248,250,252,0.98));
+  border: 1px solid rgba(15,23,42,0.12);
+  box-shadow: var(--shadow-1);
+}
+html[data-theme="light"] .article-card::before{
+  background: linear-gradient(135deg,
+    rgba(16,185,129,.18),
+    rgba(59,130,246,.12),
+    rgba(168,85,247,.10));
+}
+html[data-theme="light"] .article-card::after{
+  background: linear-gradient(180deg, rgba(255,255,255,0.92), rgba(248,250,252,0.98));
+}
+html[data-theme="light"] .article-card h3{ color: rgba(15,23,42,0.95); }
+html[data-theme="light"] .article-card p{ color: rgba(15,23,42,0.72); }
+
+html[data-theme="light"] .badge{
+  border: 1px solid rgba(15,23,42,0.14);
+  background: rgba(255,255,255,0.92);
+  box-shadow: 0 10px 28px rgba(15,23,42,.08);
+}
+
+html[data-theme="light"] .article-meta{
+  border-top: 1px solid rgba(15,23,42,0.08);
+  color: rgba(15,23,42,0.70);
+}
+
+/* setinha */
+html[data-theme="light"] .arrow{
+  border: 1px solid rgba(15,23,42,0.14);
+  background: rgba(255,255,255,0.92);
+  color: rgba(15,23,42,0.92);
+}
+html[data-theme="light"] .article-card:hover .arrow{
+  background: rgba(16,185,129,0.16);
+  border-color: rgba(16,185,129,0.45);
+  color: var(--primary);
+}
+
+/* =========================================================
+   TAGS/CHIPS NO CLARO
+   ========================================================= */
+html[data-theme="light"] .tag{
+  color: rgba(15,23,42,0.92);
+  background: rgba(255,255,255,0.82);
+  border: 1px solid rgba(15,23,42,0.16);
+  box-shadow: var(--shadow-soft);
+}
+html[data-theme="light"] .tag:hover{
+  border-color: rgba(16,185,129,0.34);
+  background: rgba(16,185,129,0.10);
+}
+html[data-theme="light"] .tags-mini span{
+  background: rgba(255,255,255,0.75);
+  border: 1px solid rgba(15,23,42,0.12);
+  color: rgba(15,23,42,0.90);
+}
+
+/* =========================================================
+   SEARCHBAR NO CLARO
+   ========================================================= */
+html[data-theme="light"] .searchbar{
+  border: 1px solid rgba(15,23,42,0.14);
+  background: rgba(255,255,255,0.82);
+  box-shadow: var(--shadow-soft);
+}
+html[data-theme="light"] .searchbar-icon{
+  border: 1px solid rgba(15,23,42,0.14);
+  background: rgba(15,23,42,0.05);
+  color: rgba(15,23,42,0.92);
+}
+html[data-theme="light"] .searchbar-input{
+  color: rgba(15,23,42,0.92);
+}
+html[data-theme="light"] .searchbar-input::placeholder{
+  color: rgba(15,23,42,0.56);
+}
+html[data-theme="light"] .searchbar-btn{
+  border: 1px solid rgba(16,185,129,0.35);
+  background: rgba(16,185,129,0.14);
+  color: rgba(5,150,105,1);
+}
+
+/* =========================================================
+   FOOTER NO CLARO
+   ========================================================= */
+html[data-theme="light"] .footer{
+  border-top: 1px solid rgba(15,23,42,0.10);
+  background: rgba(255,255,255,0.80);
+  backdrop-filter: blur(14px) saturate(140%);
+}
+html[data-theme="light"] .footer h4{ color: rgba(15,23,42,0.95); }
+html[data-theme="light"] .footer p{ color: rgba(15,23,42,0.72); }
+html[data-theme="light"] .footer a{ color: rgba(15,23,42,0.74); }
+html[data-theme="light"] .footer a:hover{ color: var(--primary); }
+
+/* =========================================================
+   ✅ ARTIGO / PROSE NO CLARO (corrige títulos brancos fixos)
+   ========================================================= */
+html[data-theme="light"] .prose{
+  color: rgba(15,23,42,0.86);
+}
+html[data-theme="light"] .prose h1,
+html[data-theme="light"] .prose h2,
+html[data-theme="light"] .prose h3{
+  color: rgba(15,23,42,0.95);
+}
+html[data-theme="light"] .prose ul,
+html[data-theme="light"] .prose ol{
+  color: rgba(15,23,42,0.84);
+}
+html[data-theme="light"] .prose a{ color: rgba(5,150,105,1); }
+html[data-theme="light"] .prose a:hover{ color: var(--primary); }
+
+html[data-theme="light"] .prose code{
+  border: 1px solid rgba(15,23,42,0.14);
+  background: rgba(15,23,42,0.05);
+  color: rgba(15,23,42,0.92);
+}
+html[data-theme="light"] .prose pre{
+  border: 1px solid rgba(15,23,42,0.14);
+  background: rgba(15,23,42,0.05);
+  color: rgba(15,23,42,0.92);
+}
+html[data-theme="light"] .prose blockquote{
+  border-left: 4px solid rgba(16,185,129,0.60);
+  background: rgba(15,23,42,0.04);
+  color: rgba(15,23,42,0.82);
+}
+
+/* =========================================================
+   ✅ PÁGINA DE ARTIGO (seu layout “article-*”)
+   — aqui costuma ficar branco demais (h2/p e afins)
+   ========================================================= */
+html[data-theme="light"] .article-back{
+  border: 1px solid rgba(15,23,42,0.14);
+  background: rgba(255,255,255,0.85);
+  color: rgba(15,23,42,0.92);
+}
+
+html[data-theme="light"] .article-title{
+  color: rgba(15,23,42,0.95);
+}
+
+html[data-theme="light"] .article-meta{
+  color: rgba(15,23,42,0.70);
+}
+
+/* wrappers/cards do artigo */
+html[data-theme="light"] .article-cover-wrap{
+  border: 1px solid rgba(15,23,42,0.12);
+  background: rgba(255,255,255,0.85);
+  box-shadow: var(--shadow-1);
+}
+html[data-theme="light"] .article-content{
+  background: rgba(255,255,255,0.85);
+  border: 1px solid rgba(15,23,42,0.12);
+}
+
+/* ✅ força leitura do conteúdo mesmo se existir color:#fff fixo no style.css */
+html[data-theme="light"] .article-content,
+html[data-theme="light"] .article-content p,
+html[data-theme="light"] .article-content li{
+  color: rgba(15,23,42,0.88);
+}
+html[data-theme="light"] .article-content h1,
+html[data-theme="light"] .article-content h2,
+html[data-theme="light"] .article-content h3{
+  color: rgba(15,23,42,0.95);
+}
+
+html[data-theme="light"] .article-content blockquote{
+  border-left: 3px solid rgba(16,185,129,0.75);
+  background: rgba(16,185,129,0.08);
+  color: rgba(15,23,42,0.84);
+}
+html[data-theme="light"] .article-content pre{
+  border: 1px solid rgba(15,23,42,0.14);
+  background: rgba(15,23,42,0.05);
+  color: rgba(15,23,42,0.92);
+}
+html[data-theme="light"] .article-content code{
+  color: rgba(15,23,42,0.92);
+}
+html[data-theme="light"] .article-btn{
+  border: 1px solid rgba(15,23,42,0.14);
+  background: rgba(15,23,42,0.05);
+  color: rgba(15,23,42,0.92);
+}
+html[data-theme="light"] .article-btn:hover{
+  border-color: rgba(16,185,129,0.40);
+  background: rgba(16,185,129,0.10);
+}
+
+/* =========================================================
+   ADMIN NO CLARO
+   ========================================================= */
+html[data-theme="light"] .admin-card{
+  border: 1px solid rgba(15,23,42,0.12);
+  background: rgba(255,255,255,0.85);
+}
+html[data-theme="light"] .admin-title,
+html[data-theme="light"] .admin-subtitle{
+  color: rgba(15,23,42,0.95);
+}
+html[data-theme="light"] .admin-muted{ color: rgba(15,23,42,0.72); }
+html[data-theme="light"] .admin-label{ color: rgba(15,23,42,0.88); }
+
+html[data-theme="light"] .admin-input{
+  border: 1px solid rgba(15,23,42,0.14);
+  background: rgba(15,23,42,0.04);
+  color: rgba(15,23,42,0.92);
+}
+html[data-theme="light"] .admin-input:focus{
+  border-color: rgba(16,185,129,0.55);
+  background: rgba(15,23,42,0.07);
+  box-shadow: 0 0 0 4px rgba(16,185,129,0.12);
+}
+html[data-theme="light"] .admin-btn{
+  border: 1px solid rgba(16,185,129,0.35);
+  background: rgba(16,185,129,0.14);
+  color: rgba(5,150,105,1);
+}
+
+/* =========================================================
+   PANEL/SECTION NO CLARO
+   ========================================================= */
+html[data-theme="light"] .panel-card{
+  border: 1px solid rgba(15,23,42,0.12);
+  background: rgba(255,255,255,0.85);
+}
+html[data-theme="light"] .stat{
+  border: 1px solid rgba(15,23,42,0.12);
+  background: rgba(15,23,42,0.03);
+}
+
+/* =========================================================
+   ✅ TOGGLE NO TEMA CLARO
+   ========================================================= */
+html[data-theme="light"] .theme-toggle{
+  border-color: rgba(15,23,42,0.16);
+  background: rgba(15,23,42,0.04);
+  box-shadow: 0 10px 30px rgba(15,23,42,0.10),
+              inset 0 1px 0 rgba(255,255,255,0.70);
+}
+html[data-theme="light"] .theme-toggle:hover{
+  background: rgba(15,23,42,0.06);
+  border-color: rgba(15,23,42,0.20);
+}
+html[data-theme="light"] .theme-toggle .tt-knob{
+  left: calc(100% - 30px);
+  background: rgba(15,23,42,0.92);
+  box-shadow: 0 10px 22px rgba(15,23,42,0.14),
+              inset 0 1px 0 rgba(255,255,255,0.18);
+}
+html[data-theme="light"] .theme-toggle .tt-icon{ filter: none; }
+html[data-theme="light"] .theme-toggle .tt-icon.tt-sun{ opacity: .95; }
+html[data-theme="light"] .theme-toggle .tt-icon.tt-moon{ opacity: .75; }
+
+/* =========================================================
+   RESPONSIVO
+   ========================================================= */
+@media (max-width: 720px){
+  .header .header-content .nav{ padding-right: 0; }
+  .theme-toggle{
+    position: static;
+    transform: none;
+    margin-left: 10px;
+  }
+}
+
+/* =========================================================
+   ✅ EXTRA: “white text killers”
+   Se algum ponto ainda ficar branco, estas linhas ganham de
+   cores fixas no seu style.css (sem quebrar o dark).
+   ========================================================= */
+html[data-theme="light"] .section-title,
+html[data-theme="light"] .panel-head h3,
+html[data-theme="light"] .trail strong,
+html[data-theme="light"] .cat-card strong,
+html[data-theme="light"] .tool strong,
+html[data-theme="light"] .footer h4{
+  color: rgba(15,23,42,0.95);
+}
+
+html[data-theme="light"] .section-subtitle{
+  color: rgba(15,23,42,0.72);
+}
+
+/* Esconder Admin no site público (mantém seu comportamento) */
+.nav a[href="admin.html"]{
+  display: none;
+}
+/* mantém o espaço do botão, mas não mostra */
+.theme-toggle.is-hidden{
+  visibility: hidden;
+  pointer-events: none;
+}

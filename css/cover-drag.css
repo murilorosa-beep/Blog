@@ -1,0 +1,28 @@
+/* css/cover-drag.css */
+
+.article-cover-wrap{
+  position: relative;
+  overflow: hidden;
+  border-radius: 16px;
+  cursor: grab;
+  user-select: none;
+  touch-action: none; /* importante no mobile: evita “puxar a tela” ao arrastar */
+}
+
+.article-cover-wrap.is-dragging{
+  cursor: grabbing;
+}
+
+/* A imagem agora é movida com object-position (não quebra scroll) */
+.article-cover{
+  width: 100%;
+  height: 280px;        /* pode manter sua altura atual */
+  object-fit: cover;
+
+  /* 👇 posição real (controlada via JS) */
+  object-position: 50% 50%;
+
+  will-change: object-position;
+  transition: object-position .04s linear; /* suave */
+  pointer-events: none; /* drag é no container */
+}
